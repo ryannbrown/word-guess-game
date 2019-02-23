@@ -55,10 +55,6 @@ var guessesMadeText = document.getElementById("guesses-made")
 // global scope for the computers key choice
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-//function which pushes guesses into the array
-// function guessesArray(){
-//     userGuess.push(guessesArray);
-// };
 
 // If the user runs out of guesses, this function is to reset the score
 
@@ -68,9 +64,6 @@ function resetScore(){
 }; 
 
 
-// attempting a for loop running over the whole thing to limit loop # to 10
-
-// for (var guessesLeft== 10; guessesLeft > 0; i--;)
 
 // This function is run when user presses a key...to guess a keyboard character
 document.onkeyup = function(event) {
@@ -79,13 +72,11 @@ document.onkeyup = function(event) {
 
 //    When the user presses a key, they lose one of their 10 guesses
    guessesLeft--;
-    
 
 //    Determine which key is being pressed
     
     userGuess = event.key;
 
-    // var userGuess = guessesMadeText;
 
     // This should be the function
              
@@ -93,14 +84,18 @@ document.onkeyup = function(event) {
     if (userGuess === computerGuess) {
         wins++;
         resetScore();
-        console.log(computerGuess, "ifwinbefore");
+        guessesMade = [];
+        // console.log(computerGuess, "ifwinbefore");
         computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-        console.log(computerGuess, "ifwinn");
+        // console.log(computerGuess, "ifwinn");
         // guessesLeft--;
     } else if (guessesLeft ===0) {
         losses++;
         resetScore();
+        guessesMade = [];
         // guessesLeft--;
+    } else if (userGuess != computerGuess){
+        guessesMade.push(userGuess);
     };
 
 // hide directions
@@ -112,7 +107,7 @@ directionsText.textContent = "";
 winsText.textContent = "Wins: " + wins;
 defeatsText.textContent = "Losses: " + losses;
 guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
-guessesMadeText.textContent = "Guesses you have made: " + userGuess;
+guessesMadeText.textContent = "Guesses you have made: " + guessesMade.join(", ");
 
 
 
@@ -122,8 +117,6 @@ guessesMadeText.textContent = "Guesses you have made: " + userGuess;
 
 }
 
-// if (guessesLeft === 0){
-//     resetScore;
 
 
 </script>
