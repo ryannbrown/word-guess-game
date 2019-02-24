@@ -43,6 +43,7 @@ var losses = 0;
 var guessesLeft = 10;
 var maxGuesses = 10;
 var guessesMade=[];
+var isDuplicate= false;
 
 
 // Referencing the variables to the html
@@ -81,6 +82,17 @@ document.onkeyup = function(event) {
     // This should be the function
              
 
+    var isDuplicate = false;
+
+for (var i = 0; i < guessesMade.length; i++) { //for every previous answer
+    if (userGuess == guessesMade[i]) { //check if the current answer is a previous one
+        isDuplicate = true;
+        guessesLeft++;
+        alert("You chose a duplicate letter. Retry!")
+        }
+    };
+
+
     if (userGuess === computerGuess) {
         wins++;
         resetScore();
@@ -97,6 +109,8 @@ document.onkeyup = function(event) {
     } else if (userGuess != computerGuess){
         guessesMade.push(userGuess);
     };
+
+  
 
 // hide directions
 
