@@ -16,7 +16,7 @@ var guessesMade=[];
 
 
 // Referencing the variables to the html
-var directionsText = document.("directions-text");
+var directionsText = document.getElementById("directions-text");
 var winsText = document.getElementById("num-wins");
 var defeatsText = document.getElementById("num-losses");
 var guessesLeftText = document.getElementById("rem-guesses");
